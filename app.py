@@ -8,10 +8,10 @@ app.config['UPLOAD_FOLDER'] = 'static'
 app.secret_key = 'super secret key'
 app.config['SESSION_TYPE'] = 'filesystem'
 
+
 def read_data():
     inproceedings = []
     article = []
-    print(os.listdir(app.static_folder))
     for file in os.listdir(app.static_folder):
         if file.split('.')[-1] == "bib":
             with open(os.path.join(app.static_folder, file)) as bibtex_file:
