@@ -15,11 +15,20 @@
             <input type="submit">
         </form>
     </div>
-    <h1>Journal articles (peer reviewed)</h1>
-
-    {% for value in data['article'] %}
+    <h1>Journal articles</h1>
+    {% for value in article %}
         <div class="row" style="margin: 0 0 0 0">
-            <p>{{ value['title'] }}</p>
+            <p>{{ value['author'] }}
+                ({{ value['month'] }}-{{ value['year'] }}). {{ value['title'] }}.{{ value['volume'] }}, {{ value['pages'] }}</p>
+        </div>
+        <br>
+    {% endfor %}
+    <h1>Journal inproceedings</h1>
+    {% for value in inproceedings %}
+        <div class="row" style="margin: 0 0 0 0">
+            <p>{{ value['author'] }}
+                ({{ value['month'] }}-{{ value['year'] }}). {{ value['title'] }}.{{ value['pages'] }},</p>
+        <a href="{{ value['doi'] }}">{{ value['doi'] }}</a>
         </div>
         <br>
     {% endfor %}
