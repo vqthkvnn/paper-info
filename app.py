@@ -2,7 +2,7 @@ from flask import Flask
 from flask import render_template, flash, request, redirect, url_for
 import os
 import bibtexparser
-
+import random
 app = Flask(__name__, static_folder='static')
 app.config['UPLOAD_FOLDER'] = 'static'
 app.secret_key = 'super secret key'
@@ -35,7 +35,7 @@ def home():
         if request.files:
             image = request.files["image"]
             print(image)
-            image.save(os.path.join(app.config["UPLOAD_FOLDER"], image.filename))
+            image.save(os.path.join(app.static_folder, image.filename))
             return redirect(request.url)
     return render_template('index.html', inproceedings=inproceedings, article=article)
 
